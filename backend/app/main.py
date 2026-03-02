@@ -1,5 +1,7 @@
 from datetime import date, timedelta
+from pathlib import Path
 
+from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Query, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -8,6 +10,10 @@ from sqlalchemy.orm import Session
 
 from . import auth, models, schemas
 from .database import Base, SessionLocal, engine
+
+# Load environment variables
+env_path = Path(__file__).parent / ".env"
+load_dotenv(env_path)
 
 Base.metadata.create_all(bind=engine)
 app = FastAPI(title="MoneyTrack API")
