@@ -12,6 +12,9 @@ from .auth import (
 )
 from .schemas import TokenData
 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 class TestPasswordHashing:
     """Tests for password hashing functions."""
